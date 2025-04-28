@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/job_confirm.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="delete-job-page">
+    <h2 class="title">Delete Job Application</h2>
+    <p class="confirmation-text">
+        Are you sure you want to delete "<strong>{{ job.job_title }}</strong>" at "<strong>{{ job.company_name }}</strong>"?
+    </p>
+    <form method="post" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="confirm-btn">Yes,Delete</button>
+        <a href="{% url 'job_list' %}" class="cancel-link">Cancel</a>
+</form>
+</div>
+
+{% endblock %}

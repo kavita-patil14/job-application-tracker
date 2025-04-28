@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/job_list.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="job-list-page">
+<h2 class="title">Your Job Applications</h2>
+<a href="{% url 'add_job' %}" class="add-btn">+ Add Job Application</a>
+
+<!-- Search and Filter Form -->
+<form method="GET" action="{% url 'job_list' %}" class="search-form">
+<span>
+    <input type="text" name="q" value="{{ search_query }}" placeholder="Search by company name" class="search-input">
+    <select name="status" class="status-filter">
+    <option value="">All Statuses</option>
+
+    {% if status_filter == "Applied" %}
+        <option value="Applied" selected>Applied</option>
+    {% else %}
+        <option value="Applied">Applied</option>
+    {% endif %}
+
+        {% if status_filter == "Not Applied" %}
+        <option value="Not Applied" selected>Not Applied</option>
+    {% else %}
+        <option value="Not Applied">Not Applied</option>
+    {% endif %}
+
+    {% if status_filter == "Interview Scheduled" %}
+        <option value="Interview Scheduled" selected>Interview Scheduled</option>
+    {% else %}
+        <option value="Interview Scheduled">Interview Scheduled</option>
+    {% endif %}
+
+    {% if status_filter == "Interview Scheduled" %}
+        <option value="Exam Scheduled" selected>Exam Scheduled</option>
+    {% else %}
+        <option value="Exam Scheduled">Exam Scheduled</option>
+    {% endif %}
+
+    {% if status_filter == "Offer Received" %}
+        <option value="Offer Received" selected>Offer Received</option>
+    {% else %}
+        <option value="Offer Received">Offer Received</option>
+    {% endif %}
+
+    {% if status_filter == "Rejected" %}
+        <option value="Rejected" selected>Rejected</option>
+    {% else %}
+        <option value="Rejected">Rejected</option>
+    {% endif %}
+
+    {% if status_filter == "Accepted" %}
+        <option value="Accepted" selected>Accepted</option>
+    {% else %}
+        <option value="Accepted">Accepted</option>
+    {% endif %}
+</select>
+
+
+    <button type="submit" class="search-button">Search</button>
+    </span>
+</form>
+
+
+
+
+<!--    &lt;!&ndash; Urgent Filter &ndash;&gt;-->
+    <form method="get" class="urgent-form">
+        <span>
+        <select name="urgent" class="urgent-select">
+            <option value="">All</option>
+            <option value="1">Urgent Only</option>
+        </select>
+        <button type="submit" class="urgent-btn">Filter</button>
+</span>
+    </form>
+
+
+<!-- Job Applications Table -->
+<table class="job-table">
+    <thead>
+        <tr>
+            <th>Company</th>
+            <th>Job Title</th>
+            <th>Status</th>
+            <th>Applied Date</th>
+            <th>Link</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in jobs %}
+
+        <tr>
+            <td>{{ job.company_name }}</td>
+            <td>{{ job.job_title }}</td>
+            <td>{{ job.status }}</td>
+            <td>{{ job.applied_date }}</td>
+
+<td>
+        {% if job.job_link %}
+          <a href="{{ job.job_link }}" target="_blank">View</a>
+        {% else %}
+          -
+        {% endif %}
+      </td>
+
+            <td>
+                <a href="{% url 'edit_job' job.id %}">Edit</a>
+                <a href="{% url 'delete_job' job.id %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No jobs found.</td>
+        </tr>
+
+
+
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<div class="urgent-btn-wrapper">
+<a href="{% url 'urgent_jobs' %}">
+    <button class="urgent-view-btn">View Urgent Deadline Jobs</button>
+</a>
+</div>
+
+
+ <div class="pagination">
+    {% if jobs.has_previous %}
+        <a href="?page=1{% if search_query %}&q={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">First</a>
+        <a href="?page={{ jobs.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">Previous</a>
+    {% endif %}
+
+<!--    <span>Page {{ jobs.number }} of {{ jobs.paginator.num_pages }}</span>-->
+
+    {% if jobs.has_next %}
+        <a href="?page={{ jobs.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">Next</a>
+        <a href="?page={{ jobs.paginator.num_pages }}{% if search_query %}&q={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">Last</a>
+    {% endif %}
+ </div>
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+

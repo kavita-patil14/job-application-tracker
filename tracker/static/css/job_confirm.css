@@ -1,0 +1,69 @@
+.delete-job-page {
+    max-width: 600px;
+    margin: 40px auto;
+
+}
+
+.title {
+    font-size: 26px;
+    color: #dc3545;
+    margin-bottom: 40px;
+    text-align:center;
+}
+
+.confirmation-text {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 60px;
+}
+
+.delete-form {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Shared style for button and link */
+.confirm-btn,
+.cancel-link {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 140px;  /* force equal width */
+    box-sizing: border-box;
+    font-family: inherit
+}
+
+
+/* Yes Delete button style */
+.confirm-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.confirm-btn:hover {
+    background-color: #b02a37;
+    transform: scale(1.03);
+}
+
+/* Cancel button style (anchor) */
+.cancel-link {
+    background-color: #6c757d;
+    color: white;
+    display: inline-block;
+}
+
+.cancel-link:hover {
+    background-color: #5a6268;
+    transform: scale(1.03);
+}
+
+
+

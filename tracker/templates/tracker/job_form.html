@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/job_form.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="job-form-page">
+    <h2 class="title">{% if form.instance.id %}Edit{% else %}Add{% endif %} Job Application</h2>
+
+    <form method="post" class="job-form">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="submit-btn">Save</button>
+    </form>
+
+    <a href="{% url 'job_list' %}" class="back-link ">Back to List</a>
+</div>
+{% endblock %}
