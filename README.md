@@ -60,8 +60,11 @@ python manage.py send_reminders
 
 ## ✉️ Email Notifications
 -Configured using Django's built-in SMTP backend.
+
 -Bravo SMTP is used as the mail service provider.
+
 -Email reminders are automatically sent to registered users about their upcoming or urgent job deadlines.
+
 -Windows Task Scheduler is configured to trigger the custom Django management command (send_reminders) daily at 9:00 AM to ensure users receive timely email updates.
 
 
