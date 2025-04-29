@@ -21,17 +21,18 @@ A Django-based application that helps track job applications, including the stat
 - Automated email reminders daily using Windows Task Scheduler
 - Clean UI using Django Templates
 
-## Technologies Used
+## 💻Technologies Used
 Python: Programming language.
 Django: A high-level Python web framework for building web applications.
 SQLite: The default database for Django projects.
 HTML/CSS: For basic structure and styling.
 Bootstrap: For responsive design.
+Email Notification: Bravo SMTP Service, Windows Task Schedular.
 
-## Setup Instructions
+## ⚙️Setup Instructions
 Follow these steps to set up the project locally:
 
-## Prerequisites
+## 📋Prerequisites
 -Python (version 3.x)
 -Django (installed using pip)
 
