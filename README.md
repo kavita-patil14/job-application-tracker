@@ -33,8 +33,8 @@ Email Notification: Bravo SMTP Service, Windows Task Schedular.
 Follow these steps to set up the project locally:
 
 ## 📋Prerequisites
--Python (version 3.x)
--Django (installed using pip)
+- Python (version 3.x)
+- Django (installed using pip)
 
 ## Steps
 1.Clone the repository:
@@ -59,12 +59,9 @@ python manage.py send_reminders
 7.Set up Task Scheduler on Windows to automate the above command daily.
 
 ## ✉️ Email Notifications
--Configured using Django's built-in SMTP backend.
-
--Bravo SMTP is used as the mail service provider.
-
--Email reminders are automatically sent to registered users about their upcoming or urgent job deadlines.
-
--Windows Task Scheduler is configured to trigger the custom Django management command (send_reminders) daily at 9:00 AM to ensure users receive timely email updates.
+- Configured using Django's built-in SMTP backend.
+- Bravo SMTP is used as the mail service provider.
+- Email reminders are automatically sent to registered users about their upcoming or urgent job deadlines.
+- Windows Task Scheduler is configured to trigger the custom Django management command (send_reminders) daily at 9:00 AM to ensure users receive timely email updates.
 
 
